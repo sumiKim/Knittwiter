@@ -1,15 +1,15 @@
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { auth } from '../firebase';
+import RecommandPatterns from './RecommandPatterns';
 
 const Wrapper = styled.div`
   display: grid;
   gap: 20px;
-  grid-template-columns: 1fr 4fr;
-  padding: 50px 0px;
+  grid-template-columns: 1fr 4fr 1fr;
+  padding: 50px 20px;
   width: 100%;
   height: 100%;
-  max-width: 860px;
 `;
 const Menu = styled.div`
   display: flex;
@@ -96,6 +96,7 @@ export default function Layout() {
         </MenuItem>
       </Menu>
       <Outlet />
+      <RecommandPatterns />
     </Wrapper>
   );
 }

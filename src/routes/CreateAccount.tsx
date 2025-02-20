@@ -140,7 +140,7 @@ export default function CreateAccount() {
       <Switcher>
         Already have an account? <Link to='/login'>Login &rarr;</Link>
       </Switcher>
-      <GithubBtn />
+      {/* <GithubBtn /> */}
     </Wrapper>
   );
 }
