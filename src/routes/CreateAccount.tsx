@@ -5,16 +5,57 @@ import { auth } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { FirebaseError } from 'firebase/app';
 import GithubBtn from '../components/GithubBtn';
+import logo from '../img/logo.png';
 
-const Wrapper = styled.div``;
-const Title = styled.h1``;
-const Form = styled.form``;
-const Input = styled.input``;
+const Wrapper = styled.div`
+  height: 100vh;
+  width: 420px;
+  padding: 0 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  gap: 20px;
+`;
+const AppImg = styled.img`
+  width: 200px;
+  height: 200px;
+`;
+const Title = styled.h1`
+  font-size: 50px;
+  font-weight: 500;
+  color: #815854;
+`;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+`;
+const Input = styled.input`
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50px;
+  &[type='submit'] {
+    cursor: pointer;
+    background-color: #815854;
+    color: white;
+    font-size: 15px;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+`;
 const Error = styled.span``;
 const Switcher = styled.span``;
 
-const errors = {
+const errors: { [key: string]: string } = {
   'Firebase: Error (auth/invalid-email).': '가입할 수 없는 이메일입니다.',
+  'Firebase: Error (auth/email-already-in-use).':
+    '이미 사용 중인 이메일입니다.',
+  'Firebase: Error (auth/weak-password).':
+    '비밀번호는 6자리 이상이어야 합니다.',
 };
 
 export default function CreateAccount() {
@@ -64,6 +105,7 @@ export default function CreateAccount() {
   return (
     <Wrapper>
       <Title>Join</Title>
+      <AppImg src={logo} alt='logo'></AppImg>
       <Form onSubmit={onSubmit}>
         <Input
           onChange={onChange}
